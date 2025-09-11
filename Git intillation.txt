@@ -1,0 +1,5 @@
+First git status
+git init to add in a repository
+git add --a (Now we can ready for the commit)
+git commit --m "This is Anil" ( Now the changes can be seen by the status)
+rm -rf .git( To exit the repository)

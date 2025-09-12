@@ -1,3 +1,4 @@
+
 name: Launch EC2
 
 on:
@@ -21,11 +22,11 @@ jobs:
 
       - name: Launch EC2 instance
         run: |
-          aws ec2 run-instances 
-            --image-id ami-0c02fb55956c7d316  # Example Amazon Linux 2 AMI (update for your region)
-            --count 1 
-            --instance-type t2.micro 
-            --key-name my-keypair            # must exist in your AWS account
-            --security-group-ids sg-0123456789abcdef0 
-            --subnet-id subnet-0123456789abcdef0 
+          aws ec2 run-instances \
+            --image-id ami-0c02fb55956c7d316 \
+            --count 1 \
+            --instance-type t2.micro \
+            --key-name my-keypair \
+            --security-group-ids sg-0123456789abcdef0 \
+            --subnet-id subnet-0123456789abcdef0 \
             --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=GitHub-Action-EC2}]'

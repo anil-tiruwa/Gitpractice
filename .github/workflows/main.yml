@@ -1,5 +1,5 @@
 
-name: Launch EC2
+name: hosting through s3
 
 on:
   workflow_dispatch:   # allows manual trigger

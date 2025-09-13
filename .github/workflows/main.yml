@@ -6,7 +6,7 @@ on:
   push:                # runs on push (optional)
 
 jobs:
-  launch-ec2:
+ build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,13 +20,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Launch EC2 instance
-        run: |
-          aws ec2 run-instances \
-            --image-id ami-0c02fb55956c7d316 \
-            --count 1 \
-            --instance-type t2.micro \
-            --key-name my-keypair \
-            --security-group-ids sg-0123456789abcdef0 \
-            --subnet-id subnet-0123456789abcdef0 \
-            --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=GitHub-Action-EC2}]'
+      - name: Deploy static website
+        run: aws s3 sysnc.s3://tws-webats --delete
+            
